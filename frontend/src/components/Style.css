@@ -1,0 +1,18 @@
+.MuiOutlinedInput-notchedOutline{
+    border: none;
+}
+.scroll_Box::-webkit-scrollbar{
+    display: none;
+}
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .on {
+    color: #000;
+  }
+  .off {
+    color: #ccc;
+  }
