@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { CreateCategoryReducer, GetAllCategory } from './reducers/CategoryReducer';
 import { GetAllProduct, CreateProduct, getProductById } from './reducers/ProductReducer';
 import { addToCardReducer } from './reducers/AddToCardReducer';
+import { saveShippingDetailsReducer, getShippingDetailsReducer } from './reducers/ShippingReducer';
 
 const reducer = combineReducers({
   UserRegisterReducer: UserRegisterReducer,
@@ -15,7 +16,9 @@ const reducer = combineReducers({
   GetAllProduct: GetAllProduct,
   CreateProduct: CreateProduct,
   getProductById: getProductById,
-  addToCardReducer: addToCardReducer
+  addToCardReducer: addToCardReducer,
+  saveShippingDetailsReducer: saveShippingDetailsReducer,
+  getShippingDetailsReducer: getShippingDetailsReducer
 });
 
 const dataFromLocalStorage = localStorage.getItem('loginInfo')

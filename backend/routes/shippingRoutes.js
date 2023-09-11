@@ -1,10 +1,11 @@
 import express from 'express';
 import { protect } from '../middleware/authMiddleware.js';
-import { shippingController } from '../controllers/shippingController.js';
+import { saveShippingController, getShippingController } from '../controllers/shippingController.js';
 
 
 const router = express.Router();
 
-router.post('/address', protect, shippingController);
+router.post('/save-address', protect, saveShippingController);
+router.get('/get-address/:userId', protect, getShippingController);
 
 export default router;

@@ -5,6 +5,7 @@ import userRouts from "./backend/routes/userRoutes.js";
 import categoryRoutes from "./backend/routes/categoryRoutes.js"
 import productRouters from "./backend/routes/productRoutes.js"
 import shippingRouters from "./backend/routes/shippingRoutes.js"
+import paymentRouters from "./backend/routes/paymentRoutes.js"
 import cors from 'cors';
 
 dotenv.config();
@@ -28,6 +29,7 @@ app.use('/api/users', userRouts );
 app.use('/api/category', categoryRoutes );
 app.use('/api/product', productRouters);
 app.use('/api/shipping', shippingRouters);
+app.use('/api/payment', paymentRouters);
 
 
 

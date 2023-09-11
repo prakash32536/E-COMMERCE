@@ -9,6 +9,7 @@ import ProductDashboard from './pages/AdminRoutes/ProductDashboard';
 import GestDashboard from './pages/GestDashboard';
 import ProductDetails from './pages/ProductDetails';
 import Card from './pages/Card';
+import Shipping from './pages/Shipping';
 function App() {
   return (
     <Routes>
@@ -55,6 +56,14 @@ function App() {
         element={
           <PrivateRoute>
             <Card />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/Shipping/:userID"
+        element={
+          <PrivateRoute>
+            <Shipping />
           </PrivateRoute>
         }
       />

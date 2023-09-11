@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,7 +7,11 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { StyledImageForProduct, StyledGridForAddToCard } from './Style';
+import {
+  StyledImageForProduct,
+  StyledGridForAddToCard,
+  StyledButtonForProductDetailsAddToCard
+} from './Style';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addToCard } from '../actions/AddToCardAction';
@@ -14,14 +19,17 @@ import { useSelector } from 'react-redux';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Header from '../components/Header';
 import { Typography, Grid } from '@mui/material';
+import './Style.css';
 
 export default function Card() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const params = useParams();
   let productId = params.productId;
   const cardItems = useSelector((state) => state.addToCardReducer);
   const [cardList, setCardList] = useState([]);
   const productQuantity = params.quantity;
+  const loginData = JSON.parse(localStorage.getItem('loginInfo'));
 
   const handleDeleteCardItem = () => {};
 
@@ -57,6 +65,10 @@ export default function Card() {
       quantity: 2
     }
   ];
+
+  const handleNavigate = () => {
+    navigate(`/shipping/${loginData._id}`);
+  };
 
   useEffect(() => {
     dispatch(addToCard(productId, productQuantity));
@@ -131,9 +143,23 @@ export default function Card() {
           </Paper>
         </StyledGridForAddToCard>
         <StyledGridForAddToCard item sx={12} md={4} lg={4}>
-          <Paper sx={{ overflow: 'hidden', margin: '20px 10px', height: '40vh', width: '96%' }}>
+          <Paper
+            sx={{
+              overflow: 'hidden',
+              margin: '20px 10px',
+              height: '40vh',
+              width: '96%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}>
             <Typography variant="h4">Total Amount</Typography>
-            <Typography>{getCardTotal()}</Typography>
+            <Typography variant="h5">{getCardTotal()}</Typography>
+            <StyledButtonForProductDetailsAddToCard
+              onClick={handleNavigate}
+              sx={{ minWidth: '210px', marginTop: '20px' }}>
+              Add Shipping Address
+            </StyledButtonForProductDetailsAddToCard>
           </Paper>
         </StyledGridForAddToCard>
       </Grid>

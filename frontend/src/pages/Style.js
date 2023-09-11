@@ -89,3 +89,8 @@ export const StyledImageForProduct = styled.img`
 export const StyledGridForAddToCard = styled(Grid)`
   width: 100%;
 `;
+export const StyledGridForShippingList = styled(Grid)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
